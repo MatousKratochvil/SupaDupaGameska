@@ -6,8 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HuntTheWhumpus.Abstraction\HuntTheWhumpus.Abstraction.csproj" />
-      <ProjectReference Include="..\HuntTheWhumpus.Common\HuntTheWhumpus.Common.csproj" />
       <ProjectReference Include="..\HuntTheWhumpus.Interactor\HuntTheWhumpus.Interactor.csproj" />
     </ItemGroup>
 
