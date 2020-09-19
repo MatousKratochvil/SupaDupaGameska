@@ -1,4 +1,4 @@
-﻿namespace HuntTheWhumpus.Interactor.Interfaces
+﻿namespace HuntTheWhumpus.Entities.Interfaces
 {
 	public interface IEntity<TKey>
 	{

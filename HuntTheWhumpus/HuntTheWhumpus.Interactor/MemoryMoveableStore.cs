@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HuntTheWhumpus.Entities.Interfaces;
+using HuntTheWhumpus.Entities.Player;
 using HuntTheWhumpus.Interactor.Interfaces;
 using MediatR;
 

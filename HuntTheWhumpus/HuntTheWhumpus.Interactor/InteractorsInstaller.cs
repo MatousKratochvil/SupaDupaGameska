@@ -6,7 +6,7 @@ namespace HuntTheWhumpus.Interactor
 {
 	public static class InteractorsInstaller
 	{
-		public static IServiceCollection Install(this IServiceCollection collection)
+		public static IServiceCollection InstallInteractor(this IServiceCollection collection)
 		{
 			collection.AddMediatR(typeof(InteractorsFacade).Assembly);
 			collection.AddSingleton<IMoveableStore, MemoryMoveableStore>();
