@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HuntTheWhumpus.Entities;
 using HuntTheWhumpus.Entities.Interfaces;
-using HuntTheWhumpus.Entities.Player;
 using HuntTheWhumpus.Interactor.Interfaces;
 using MediatR;
 
@@ -12,37 +12,37 @@ namespace HuntTheWhumpus.Interactor
 	{
 		static readonly object Lock = new object();
 
-		readonly Dictionary<Guid, IMoveable> _dictionary = new Dictionary<Guid, IMoveable> {{Guid.Empty, new Player()}};
+		readonly Dictionary<Guid, IMoveableEntity> _dictionary = new Dictionary<Guid, IMoveableEntity> {{Guid.Empty, new Player()}};
 
-		public Task<IMoveable> FindAsync(Guid id)
+		public Task<IMoveableEntity> FindAsync(Guid id)
 		{
-			IMoveable moveable = null;
+			IMoveableEntity moveableEntity = null;
 			lock (Lock)
 			{
-				moveable = _dictionary[id];
+				moveableEntity = _dictionary[id];
 			}
 
-			return Task.FromResult(moveable);
+			return Task.FromResult(moveableEntity);
 		}
 
-		public Task<Unit> UpdateAsync(IMoveable moveable)
+		public Task<Unit> UpdateAsync(IMoveableEntity moveableEntity)
 		{
 			lock (Lock)
 			{
-				_dictionary[moveable.Id] = moveable;
+				_dictionary[moveableEntity.Id] = moveableEntity;
 			}
 
 			return Unit.Task;
 		}
 
-		public Task<Guid> SaveAsync(IMoveable moveable)
+		public Task<Guid> SaveAsync(IMoveableEntity moveableEntity)
 		{
 			lock (Lock)
 			{
-				_dictionary.Add(moveable.Id, moveable);
+				_dictionary.Add(moveableEntity.Id, moveableEntity);
 			}
 
-			return Task.FromResult(moveable.Id);
+			return Task.FromResult(moveableEntity.Id);
 		}
 	}
 }

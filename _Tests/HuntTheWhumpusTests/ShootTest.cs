@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HuntTheWhumpus.Entities.Player;
+using HuntTheWhumpus.Entities;
 using HuntTheWhumpus.ShootInteractor.Interfaces;
 using HuntTheWhumpusTests.Initializers;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,12 +23,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await ShootFacade.ShootUp(_shootableStoreId);
-				var player = (Player) await store.FindAsync(_shootableStoreId);
+				var shootable = await store.FindAsync(_shootableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_shootableStoreId);
-				player.GetShootLocation.x.Should().Be(0);
-				player.GetShootLocation.y.Should().Be(-1);
+				shootable.Id.Should().Be(_shootableStoreId);
+				shootable.GetShootLocation.x.Should().Be(0);
+				shootable.GetShootLocation.y.Should().Be(-1);
 			}
 		}
 
@@ -44,15 +44,15 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await ShootFacade.ShootDown(_shootableStoreId);
-				var player = (Player) await store.FindAsync(_shootableStoreId);
+				var shootable = await store.FindAsync(_shootableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_shootableStoreId);
-				player.GetShootLocation.x.Should().Be(0);
-				player.GetShootLocation.y.Should().Be(1);
+				shootable.Id.Should().Be(_shootableStoreId);
+				shootable.GetShootLocation.x.Should().Be(0);
+				shootable.GetShootLocation.y.Should().Be(1);
 			}
 		}
-		
+
 		public class ShootLeft : ShootTestInitializer
 		{
 			static Guid _shootableStoreId = Guid.Empty;
@@ -65,15 +65,15 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await ShootFacade.ShootLeft(_shootableStoreId);
-				var player = (Player) await store.FindAsync(_shootableStoreId);
+				var shootable = await store.FindAsync(_shootableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_shootableStoreId);
-				player.GetShootLocation.x.Should().Be(-1);
-				player.GetShootLocation.y.Should().Be(0);
+				shootable.Id.Should().Be(_shootableStoreId);
+				shootable.GetShootLocation.x.Should().Be(-1);
+				shootable.GetShootLocation.y.Should().Be(0);
 			}
 		}
-		
+
 		public class ShootRight : ShootTestInitializer
 		{
 			static Guid _shootableStoreId = Guid.Empty;
@@ -86,12 +86,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await ShootFacade.ShootRight(_shootableStoreId);
-				var player = (Player) await store.FindAsync(_shootableStoreId);
+				var shootable = await store.FindAsync(_shootableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_shootableStoreId);
-				player.GetShootLocation.x.Should().Be(1);
-				player.GetShootLocation.y.Should().Be(0);
+				shootable.Id.Should().Be(_shootableStoreId);
+				shootable.GetShootLocation.x.Should().Be(1);
+				shootable.GetShootLocation.y.Should().Be(0);
 			}
 		}
 	}

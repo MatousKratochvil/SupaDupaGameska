@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using HuntTheWhumpus.Entities;
 using HuntTheWhumpus.Entities.Interfaces;
-using HuntTheWhumpus.Entities.Player;
 using HuntTheWhumpus.ShootInteractor.Interfaces;
 using MediatR;
 
@@ -12,11 +12,11 @@ namespace HuntTheWhumpus.ShootInteractor
 	{
 		static readonly object Lock = new object();
 
-		readonly Dictionary<Guid, IShootable> _dictionary = new Dictionary<Guid, IShootable> {{Guid.Empty, new Player()}};
+		readonly Dictionary<Guid, IShootableEntity> _dictionary = new Dictionary<Guid, IShootableEntity> {{Guid.Empty, new Player()}};
 
-		public Task<IShootable> FindAsync(Guid id)
+		public Task<IShootableEntity> FindAsync(Guid id)
 		{
-			IShootable moveable = null;
+			IShootableEntity moveable = null;
 			lock (Lock)
 			{
 				moveable = _dictionary[id];
@@ -25,17 +25,17 @@ namespace HuntTheWhumpus.ShootInteractor
 			return Task.FromResult(moveable);
 		}
 
-		public Task<Unit> UpdateAsync(IShootable shootable)
+		public Task<Unit> UpdateAsync(IShootableEntity shootableEntity)
 		{
 			lock (Lock)
 			{
-				_dictionary[shootable.Id] = shootable;
+				_dictionary[shootableEntity.Id] = shootableEntity;
 			}
 
 			return Unit.Task;
 		}
 
-		public Task<Guid> SaveAsync(IShootable moveable)
+		public Task<Guid> SaveAsync(IShootableEntity moveable)
 		{
 			lock (Lock)
 			{

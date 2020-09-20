@@ -8,9 +8,9 @@ namespace HuntTheWhumpus.Interactor
 {
 	public class TestMovePresenter : IMovePresenter
 	{
-		public Task<Unit> PresentAsync(IMoveable moveable)
+		public Task<Unit> PresentAsync(IMoveableEntity moveableEntity)
 		{
-			Console.WriteLine(moveable.ToString());
+			Console.WriteLine(moveableEntity.ToString());
 			return Unit.Task;
 		}
 	}

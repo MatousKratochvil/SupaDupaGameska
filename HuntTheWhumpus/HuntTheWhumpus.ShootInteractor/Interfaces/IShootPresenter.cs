@@ -6,6 +6,6 @@ namespace HuntTheWhumpus.ShootInteractor.Interfaces
 {
 	public interface IShootPresenter
 	{
-		Task<Unit> PresentAsync(IShootable shootable);
+		Task<Unit> PresentAsync(IShootableEntity shootableEntity);
 	}
 }

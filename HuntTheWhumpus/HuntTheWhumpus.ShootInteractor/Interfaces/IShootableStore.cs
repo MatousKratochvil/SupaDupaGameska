@@ -5,12 +5,12 @@ using MediatR;
 
 namespace HuntTheWhumpus.ShootInteractor.Interfaces
 {
-	public interface IShootableStore : IRepository<IShootable>
+	public interface IShootableStore : IRepository<IShootableEntity>
 	{
-		Task<IShootable> FindAsync(Guid id);
+		Task<IShootableEntity> FindAsync(Guid id);
 
-		Task<Unit> UpdateAsync(IShootable moveable);
+		Task<Unit> UpdateAsync(IShootableEntity moveable);
 
-		Task<Guid> SaveAsync(IShootable moveable);
+		Task<Guid> SaveAsync(IShootableEntity moveable);
 	}
 }

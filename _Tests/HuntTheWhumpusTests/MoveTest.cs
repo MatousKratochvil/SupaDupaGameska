@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using HuntTheWhumpus.Entities.Player;
+using HuntTheWhumpus.Entities;
 using HuntTheWhumpus.Interactor.Interfaces;
 using HuntTheWhumpusTests.Initializers;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,12 +23,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await MoveFacade.MoveUp(_moveableStoreId);
-				var player = (Player) await store.FindAsync(_moveableStoreId);
+				var moveable = await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_moveableStoreId);
-				player.GetPosition.x.Should().Be(0);
-				player.GetPosition.y.Should().Be(-1);
+				moveable.Id.Should().Be(_moveableStoreId);
+				moveable.GetPosition.x.Should().Be(0);
+				moveable.GetPosition.y.Should().Be(-1);
 			}
 		}
 
@@ -44,12 +44,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await MoveFacade.MoveDown(_moveableStoreId);
-				var player = (Player) await store.FindAsync(_moveableStoreId);
+				var moveable = await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_moveableStoreId);
-				player.GetPosition.x.Should().Be(0);
-				player.GetPosition.y.Should().Be(1);
+				moveable.Id.Should().Be(_moveableStoreId);
+				moveable.GetPosition.x.Should().Be(0);
+				moveable.GetPosition.y.Should().Be(1);
 			}
 		}
 		
@@ -65,12 +65,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await MoveFacade.MoveLeft(_moveableStoreId);
-				var player = (Player) await store.FindAsync(_moveableStoreId);
+				var moveable = await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_moveableStoreId);
-				player.GetPosition.x.Should().Be(-1);
-				player.GetPosition.y.Should().Be(0);
+				moveable.Id.Should().Be(_moveableStoreId);
+				moveable.GetPosition.x.Should().Be(-1);
+				moveable.GetPosition.y.Should().Be(0);
 			}
 		}
 		
@@ -86,12 +86,12 @@ namespace HuntTheWhumpusTests
 
 				// Act
 				await MoveFacade.MoveRight(_moveableStoreId);
-				var player = (Player) await store.FindAsync(_moveableStoreId);
+				var moveable = await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(_moveableStoreId);
-				player.GetPosition.x.Should().Be(1);
-				player.GetPosition.y.Should().Be(0);
+				moveable.Id.Should().Be(_moveableStoreId);
+				moveable.GetPosition.x.Should().Be(1);
+				moveable.GetPosition.y.Should().Be(0);
 			}
 		}
 		

@@ -6,6 +6,6 @@ namespace HuntTheWhumpus.Interactor.Interfaces
 {
 	public interface IMovePresenter
 	{
-		Task<Unit> PresentAsync(IMoveable moveable);
+		Task<Unit> PresentAsync(IMoveableEntity moveableEntity);
 	}
 }

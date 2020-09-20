@@ -36,7 +36,7 @@ namespace HuntTheWhumpus.ShootInteractor
 		public Task<Unit> Handle(ShootRightRequest request, CancellationToken cancellationToken)
 			=> ShootHandleAsync(request, x => x.ShootRight());
 		
-		async Task<Unit> ShootHandleAsync(ShootRequest request, Action<IShootable> requestAction)
+		async Task<Unit> ShootHandleAsync(ShootRequest request, Action<IShootableEntity> requestAction)
 		{
 			var shootable = await _shootableStore.FindAsync(request.ShootableId).ConfigureAwait(false);
 

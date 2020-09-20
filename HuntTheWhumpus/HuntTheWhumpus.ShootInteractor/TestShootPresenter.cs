@@ -8,9 +8,9 @@ namespace HuntTheWhumpus.ShootInteractor
 {
 	public class TestShootPresenter : IShootPresenter
 	{
-		public Task<Unit> PresentAsync(IShootable shootable)
+		public Task<Unit> PresentAsync(IShootableEntity shootableEntity)
 		{
-			Console.WriteLine(shootable.ToString());
+			Console.WriteLine(shootableEntity.ToString());
 			return Unit.Task;
 		}
 	}

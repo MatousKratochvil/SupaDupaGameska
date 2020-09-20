@@ -36,7 +36,7 @@ namespace HuntTheWhumpus.Interactor
 		public async Task<Unit> Handle(MoveUpRequest request, CancellationToken cancellationToken)
 			=> await MoveHandleAsync(request, x => x.MoveUp());
 
-		async Task<Unit> MoveHandleAsync(MoveRequest request, Action<IMoveable> requestAction)
+		async Task<Unit> MoveHandleAsync(MoveRequest request, Action<IMoveableEntity> requestAction)
 		{
 			var moveable = await _moveableStore.FindAsync(request.MoveableId).ConfigureAwait(false);
 
