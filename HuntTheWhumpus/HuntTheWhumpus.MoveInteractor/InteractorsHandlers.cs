@@ -16,12 +16,12 @@ namespace HuntTheWhumpus.Interactor
 		IRequestHandler<MoveRightRequest>
 	{
 		readonly IMoveableStore _moveableStore;
-		readonly IPresenter _presenter;
+		readonly IMovePresenter _movePresenter;
 
-		public InteractorsHandlers(IMoveableStore moveableStore, IPresenter presenter)
+		public InteractorsHandlers(IMoveableStore moveableStore, IMovePresenter movePresenter)
 		{
 			_moveableStore = moveableStore ?? throw new ArgumentNullException(nameof(moveableStore));
-			_presenter = presenter ?? throw new ArgumentNullException(nameof(presenter));
+			_movePresenter = movePresenter ?? throw new ArgumentNullException(nameof(movePresenter));
 		}
 
 		public async Task<Unit> Handle(MoveDownRequest request, CancellationToken cancellationToken)
@@ -36,14 +36,14 @@ namespace HuntTheWhumpus.Interactor
 		public async Task<Unit> Handle(MoveUpRequest request, CancellationToken cancellationToken)
 			=> await MoveHandleAsync(request, x => x.MoveUp());
 
-		async Task<Unit> MoveHandleAsync(DirectionRequest request, Action<IMoveable> requestAction)
+		async Task<Unit> MoveHandleAsync(MoveRequest request, Action<IMoveable> requestAction)
 		{
 			var moveable = await _moveableStore.FindAsync(request.MoveableId).ConfigureAwait(false);
 
 			requestAction.Invoke(moveable);
 
 			await _moveableStore.UpdateAsync(moveable).ConfigureAwait(false);
-			await _presenter.PresentAsync(moveable).ConfigureAwait(false);
+			await _movePresenter.PresentAsync(moveable).ConfigureAwait(false);
 
 			return Unit.Value;
 		}

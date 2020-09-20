@@ -5,11 +5,11 @@ using MediatR;
 
 namespace HuntTheWhumpus.Interactor
 {
-	public class InteractorsFacade
+	public class MoveInteractorsFacade
 	{
 		readonly IMediator _mediator;
 
-		public InteractorsFacade(IMediator mediator)
+		public MoveInteractorsFacade(IMediator mediator)
 		{
 			_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 		}

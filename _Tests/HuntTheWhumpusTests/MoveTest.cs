@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using HuntTheWhumpus.Entities.Player;
-using HuntTheWhumpus.Interactor;
 using HuntTheWhumpus.Interactor.Interfaces;
+using HuntTheWhumpusTests.Initializers;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -11,29 +11,9 @@ namespace HuntTheWhumpusTests
 {
 	public class MoveTest
 	{
-		public class TestInitiazlier
+		public class MoveUp : MoveTestInitializer
 		{
-			protected InteractorsFacade MoveFacade;
-			protected IServiceProvider Provider;
-
-			public TestInitiazlier()
-			{
-				Provider = CreateProvider();
-				MoveFacade = Provider.GetService<InteractorsFacade>();
-			}
-
-			static IServiceProvider CreateProvider()
-			{
-				var service = new ServiceCollection();
-				service.InstallInteractor();
-
-				return service.BuildServiceProvider();
-			}
-		}
-
-		public class MoveUp : TestInitiazlier
-		{
-			static Guid MoveableStoreId = Guid.Empty;
+			static Guid _moveableStoreId = Guid.Empty;
 
 			[Fact]
 			public async Task MoveUp_SuccessResult()
@@ -42,19 +22,19 @@ namespace HuntTheWhumpusTests
 				var store = Provider.GetService<IMoveableStore>();
 
 				// Act
-				await MoveFacade.MoveUp(MoveableStoreId);
-				var player = (Player) await store.FindAsync(MoveableStoreId);
+				await MoveFacade.MoveUp(_moveableStoreId);
+				var player = (Player) await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(MoveableStoreId);
+				player.Id.Should().Be(_moveableStoreId);
 				player.GetPosition.x.Should().Be(0);
 				player.GetPosition.y.Should().Be(-1);
 			}
 		}
 
-		public class MoveDown : TestInitiazlier
+		public class MoveDown : MoveTestInitializer
 		{
-			static Guid MoveableStoreId = Guid.Empty;
+			static Guid _moveableStoreId = Guid.Empty;
 
 			[Fact]
 			public async Task MoveDown_SuccessResult()
@@ -63,19 +43,19 @@ namespace HuntTheWhumpusTests
 				var store = Provider.GetService<IMoveableStore>();
 
 				// Act
-				await MoveFacade.MoveDown(MoveableStoreId);
-				var player = (Player) await store.FindAsync(MoveableStoreId);
+				await MoveFacade.MoveDown(_moveableStoreId);
+				var player = (Player) await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(MoveableStoreId);
+				player.Id.Should().Be(_moveableStoreId);
 				player.GetPosition.x.Should().Be(0);
 				player.GetPosition.y.Should().Be(1);
 			}
 		}
 		
-		public class MoveLeft : TestInitiazlier
+		public class MoveLeft : MoveTestInitializer
 		{
-			static Guid MoveableStoreId = Guid.Empty;
+			static Guid _moveableStoreId = Guid.Empty;
 
 			[Fact]
 			public async Task MoveLeft_SuccessResult()
@@ -84,19 +64,19 @@ namespace HuntTheWhumpusTests
 				var store = Provider.GetService<IMoveableStore>();
 
 				// Act
-				await MoveFacade.MoveLeft(MoveableStoreId);
-				var player = (Player) await store.FindAsync(MoveableStoreId);
+				await MoveFacade.MoveLeft(_moveableStoreId);
+				var player = (Player) await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(MoveableStoreId);
+				player.Id.Should().Be(_moveableStoreId);
 				player.GetPosition.x.Should().Be(-1);
 				player.GetPosition.y.Should().Be(0);
 			}
 		}
 		
-		public class MoveRight : TestInitiazlier
+		public class MoveRight : MoveTestInitializer
 		{
-			static Guid MoveableStoreId = Guid.Empty;
+			static Guid _moveableStoreId = Guid.Empty;
 
 			[Fact]
 			public async Task MoveRight_SuccessResult()
@@ -105,11 +85,11 @@ namespace HuntTheWhumpusTests
 				var store = Provider.GetService<IMoveableStore>();
 
 				// Act
-				await MoveFacade.MoveRight(MoveableStoreId);
-				var player = (Player) await store.FindAsync(MoveableStoreId);
+				await MoveFacade.MoveRight(_moveableStoreId);
+				var player = (Player) await store.FindAsync(_moveableStoreId);
 
 				// Assert
-				player.Id.Should().Be(MoveableStoreId);
+				player.Id.Should().Be(_moveableStoreId);
 				player.GetPosition.x.Should().Be(1);
 				player.GetPosition.y.Should().Be(0);
 			}

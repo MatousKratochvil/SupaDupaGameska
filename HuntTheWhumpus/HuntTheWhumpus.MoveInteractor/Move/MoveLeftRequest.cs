@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HuntTheWhumpus.Interactor.Move
 {
-	class MoveLeftRequest : DirectionRequest, IRequest
+	class MoveLeftRequest : MoveRequest, IRequest
 	{
 		public MoveLeftRequest(Guid moveableId) : base(moveableId)
 		{

@@ -6,7 +6,7 @@ using MediatR;
 
 namespace HuntTheWhumpus.Interactor
 {
-	public class TestPresenter : IPresenter
+	public class TestMovePresenter : IMovePresenter
 	{
 		public Task<Unit> PresentAsync(IMoveable moveable)
 		{

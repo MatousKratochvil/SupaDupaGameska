@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HuntTheWhumpus.Interactor.Interfaces
 {
-	public interface IPresenter
+	public interface IMovePresenter
 	{
 		Task<Unit> PresentAsync(IMoveable moveable);
 	}

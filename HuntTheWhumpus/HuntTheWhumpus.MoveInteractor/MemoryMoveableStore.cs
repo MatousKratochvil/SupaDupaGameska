@@ -10,14 +10,14 @@ namespace HuntTheWhumpus.Interactor
 {
 	class MemoryMoveableStore : IMoveableStore
 	{
-		static readonly object @lock = new object();
+		static readonly object Lock = new object();
 
 		readonly Dictionary<Guid, IMoveable> _dictionary = new Dictionary<Guid, IMoveable> {{Guid.Empty, new Player()}};
 
 		public Task<IMoveable> FindAsync(Guid id)
 		{
 			IMoveable moveable = null;
-			lock (@lock)
+			lock (Lock)
 			{
 				moveable = _dictionary[id];
 			}
@@ -27,7 +27,7 @@ namespace HuntTheWhumpus.Interactor
 
 		public Task<Unit> UpdateAsync(IMoveable moveable)
 		{
-			lock (@lock)
+			lock (Lock)
 			{
 				_dictionary[moveable.Id] = moveable;
 			}
@@ -37,7 +37,7 @@ namespace HuntTheWhumpus.Interactor
 
 		public Task<Guid> SaveAsync(IMoveable moveable)
 		{
-			lock (@lock)
+			lock (Lock)
 			{
 				_dictionary.Add(moveable.Id, moveable);
 			}

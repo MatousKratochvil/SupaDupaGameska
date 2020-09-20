@@ -25,7 +25,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.Interactor\HuntTheWhumpus.Interactor.csproj" />
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.MoveInteractor\HuntTheWhumpus.MoveInteractor.csproj" />
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.ShootInteractor\HuntTheWhumpus.ShootInteractor.csproj" />
     </ItemGroup>
 
 </Project>

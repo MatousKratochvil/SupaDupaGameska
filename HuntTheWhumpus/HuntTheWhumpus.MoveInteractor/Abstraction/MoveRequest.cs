@@ -2,9 +2,9 @@
 
 namespace HuntTheWhumpus.Interactor.Abstraction
 {
-	public abstract class DirectionRequest
+	public abstract class MoveRequest
 	{
-		protected DirectionRequest(Guid moveableId)
+		protected MoveRequest(Guid moveableId)
 		{
 			MoveableId = moveableId;
 		}

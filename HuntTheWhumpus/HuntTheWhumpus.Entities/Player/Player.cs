@@ -6,6 +6,6 @@ namespace HuntTheWhumpus.Entities.Player
 	{
 		public Guid Id { get; } = Guid.Empty;
 		
-		public override string ToString() => $"Player - X: {X}, Y: {Y}";
+		public override string ToString() => $"Player - X: {_x}, Y: {_y}";
 	}
 }
