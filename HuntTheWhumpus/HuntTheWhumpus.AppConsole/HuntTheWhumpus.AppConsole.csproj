@@ -3,10 +3,8 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\HuntTheWhumpus.Interactor\HuntTheWhumpus.Interactor.csproj" />
-    </ItemGroup>
 
 </Project>
