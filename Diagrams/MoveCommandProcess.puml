@@ -1,0 +1,21 @@
+﻿@startuml
+
+(*) --> "Pass MoveCommand 
+    with Room request"
+
+if "Passed Room exist" then
+    --> [true] "Process move"
+    --> "Create MoveContext 
+    with processed move"
+    --> "Add MoveContext to Prensenter"
+else
+    --> [false] "Process move Error"
+    --> "Create MoveContext
+    with error move"
+    --> "Add MoveContext to Prensenter"
+endif
+
+--> Present
+--> (*)
+
+@enduml

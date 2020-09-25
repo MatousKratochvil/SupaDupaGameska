@@ -25,7 +25,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.Application\HuntTheWhumpus.Application.csproj" />
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.Core\HuntTheWhumpus.Core.csproj" />
       <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.MoveInteractor\HuntTheWhumpus.MoveInteractor.csproj" />
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.PresenterInfrastructure\HuntTheWhumpus.PresenterInfrastructure.csproj" />
+      <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.RepositoryInfrastructure\HuntTheWhumpus.RepositoryInfrastructure.csproj" />
       <ProjectReference Include="..\..\HuntTheWhumpus\HuntTheWhumpus.ShootInteractor\HuntTheWhumpus.ShootInteractor.csproj" />
     </ItemGroup>
 

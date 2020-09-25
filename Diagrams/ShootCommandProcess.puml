@@ -1,0 +1,28 @@
+﻿@startuml
+
+(*) --> "Pass ShootCommand
+    with Room request"
+    
+if "Able to shoot to Room" then
+    --> [true] "Check For whumpus"
+    if "Room has whumpus" then
+        --> [true] "Process whumpus shoot"
+        --> "Create ShootContext
+        with processed shoot"
+    else
+        --> [false] "Process empty room shoot"
+        --> "Create ShootContext
+        with processed shoot"
+    endif
+    --> "Add ShootCotext to Prensenter"
+else
+    --> [false] "Process shoot Error"
+    --> "Create ShootContext
+    with error shoot"
+    --> "Add ShootCotext to Prensenter"
+endif
+
+--> Present
+--> (*)
+
+@enduml

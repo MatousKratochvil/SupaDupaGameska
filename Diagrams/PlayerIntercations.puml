@@ -1,0 +1,37 @@
+﻿@startuml
+
+left to right direction
+
+actor "Human Player" as hp
+
+package Presenter {
+    usecase "Move Presenter" as mp
+    usecase "Shoot Presenter" as sp
+}
+
+hp --> mp
+hp --> sp
+
+package MoveCommand {
+    usecase "Move Command" as mc
+    
+    hp --> mc
+    
+    usecase "Move 'Avalible Room'" as mar
+    
+    mc <|-- mar
+    mp <|-- mar
+}
+
+package ShootCommand {
+    usecase "Shoot Command" as sc
+    
+    hp --> sc
+    
+    usecase "Shoot 'Avalible Room'" as sar
+    
+    sc <|-- sar 
+    sp <|-- sar
+}
+
+@enduml

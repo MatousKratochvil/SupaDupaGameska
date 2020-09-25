@@ -7,4 +7,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HuntTheWhumpus.Application\HuntTheWhumpus.Application.csproj" />
+      <ProjectReference Include="..\HuntTheWhumpus.Core\HuntTheWhumpus.Core.csproj" />
+      <ProjectReference Include="..\HuntTheWhumpus.PresenterInfrastructure\HuntTheWhumpus.PresenterInfrastructure.csproj" />
+      <ProjectReference Include="..\HuntTheWhumpus.RepositoryInfrastructure\HuntTheWhumpus.RepositoryInfrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    </ItemGroup>
+
 </Project>
